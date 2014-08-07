@@ -35,19 +35,18 @@ var creatures = [];
 
   function createAnimal(numAnimals) {
     var name, speed, focus;
-    alert("Animal #" + (numAnimals+1));
-    name = prompt("What is the animals name?");
-    speed = prompt("How fast is "+name);
-    speed = parseInt(speed);
-    focus = prompt("How focused is "+name);
-    focus = parseInt(focus);
+
+
+    name = document.getElementbyId("name").target;
+    speed = document.getElementbyId("speed").target;
+    focus = document.getElementbyId("focus").target;
 
     creatures.push(new Animal(name, speed, focus));
   }
 
-  var numAnimals = prompt("How many animals do you want to race?");
+  var numAnimals = document.getElementbyID("numAnimals").target;
   for(var i = 0; i < numAnimals; i++){
-      createAnimal(i);
+      var numColumns = document
   }
   //creatures[0] = new Animal("Peter",5,2);
   //creatures[1] = new Animal("Yurtle",2,10);
