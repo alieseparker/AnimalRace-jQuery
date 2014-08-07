@@ -8,6 +8,33 @@ var creatures = [];
     this.position = 0;
   }
 
+  function createAnimal() {
+    var name, speed, focus;
+    this.name = document.getElementbyId("animal1name").target;
+    this.speed = document.getElementbyId("animal1speed").value;
+    this.focus = document.getElementbyId("animal1focus").value;
+
+    creatures.push(new Animal(name, speed, focus));
+  }
+
+
+function addRow() {
+
+    //var myName = document.getElementById("name");
+    //var speed = document.getElementById("speed");
+    //var focus = document.getElementById("focus")
+    var table = document.getElementById("form1");
+
+    var rowCount = table.rows.length;
+    var row = table.insertRow(rowCount);
+
+    row.insertCell(0).innerHTML= myName.value;
+    row.insertCell(1).innerHTML= speed.value;
+    row.insertCell(2).innerHTML= focus.value;
+
+
+}
+
   function winner() {
     var whoWins = 0;
     var finalPosition = 0;
@@ -33,33 +60,6 @@ var creatures = [];
     }
   }
 
-  function createAnimal(numAnimals) {
-    var name, speed, focus;
-
-
-    name = document.getElementbyId("name").target;
-    speed = document.getElementbyId("speed").target;
-    focus = document.getElementbyId("focus").target;
-
-    creatures.push(new Animal(name, speed, focus));
-  }
-
-  var numAnimals = document.getElementbyID("numAnimals").target;
-  for(var i = 0; i < numAnimals; i++){
-      var numColumns = document
-  }
-  //creatures[0] = new Animal("Peter",5,2);
-  //creatures[1] = new Animal("Yurtle",2,10);
-  var turns = prompt("How many turns will the animals race for?");
-  turns = parseInt(turns)
-
-  alert("The Race Will Start in:");
-  alert("3...");
-  alert("2...");
-  alert("1...");
-  alert("GO!!!");
-
-  for(var  i = 0; i<turns; i++) {
-    turn(i);
-  }
-  winner();
+  addRow();
+  addRow();
+  addRow();
