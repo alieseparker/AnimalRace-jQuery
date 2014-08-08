@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+<script type ="text/javascript" src ="raceday.js"></script>
 <head>
   <title>RACE DAY!!!</title>
 </head>
@@ -29,52 +30,24 @@
       <div id = "inputTable">
         <table style = "width 300px">
           <tr>
-            <th>Animal #1</th>
+            <th id ="labelnumAnimal">Animal #1</th>
             <th>Animal #2</th>
-            <th>Animal #3</th>
-            <th>Animal #4</th>
-            <th>Animal #5</th>
           </tr>
           <tr>
             <th>
               <form id="form1">
-                Animal Name: <input type="text" name="animal1name"><br>
-                Animal Speed: <input type="text" name="animal1speed"><br>
-                Animal Focus: <input type="text" name="animal1focus"><br>
-              </form>
-            </th>
-            <th>
-              <form>
-                Animal Name: <input type="text" name="animal2name"><br>
-                Animal Speed: <input type="text" name="animal2speed"><br>
-                Animal Focus: <input type="text" name="animal2focus"><br>
-              </form>
-            </th>
-            <th>
-              <form>
-                Animal Name: <input type="text" name="animal3name"><br>
-                Animal Speed: <input type="text" name="animal3speed"><br>
-                Animal Focus: <input type="text" name="animal3focus"><br>
-              </form>
-            </th>
-            <th>
-              <form>
-                Animal Name: <input type="text" name="animal4name"><br>
-                Animal Speed: <input type="text" name="animal4speed"><br>
-                Animal Focus: <input type="text" name="animal4focus"><br>
-              </form>
-            </th>
-            <th>
-              <form>
-                Animal Name: <input type="text" name="animal5name"><br>
-                Animal Speed: <input type="text" name="animal5speed"><br>
-                Animal Focus: <input type="text" name="animal5focus"><br>
+                <ul>
+                  <li id="one">Animal Name: <input type="text" name="animal1name"><br></li>
+                  <li id="two">Animal Speed: <input type="text" name="animal1speed"><br></li>
+                  <li id="three">Animal Focus: <input type="text" name="animal1focus"><br></li>
+                </ul>
               </form>
             </th>
         </table>
+       </div>
         <br>
         <div align="center">
-          <button>RACE!</button>
+          <button input type ="button" id ="submitButton" onclick="buttonClick()">Submit</button>
         </div>
     </section>
     <section>
