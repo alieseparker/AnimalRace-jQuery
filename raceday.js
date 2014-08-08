@@ -3,9 +3,10 @@ var creatures = [];
 var globalanimalcount=1;
 
   function  writeForm(numRacers) {
-    if(globalanimalcount<numRacers) {
+    /*if(globalanimalcount<numRacers) {
       for(var i = 1; i <= numRacers; i++) {
         var tempname="animalname"+i, tempspeed="animalspeed"+i, tempfocus="animalfocus"+i, tempform="form"+i;
+        var newlist=document.createElement("ul")
         var animalname=document.createElement("input");
           animalname.setAttribute('type', 'text');
           animalname.setAttribute('id', tempname);
@@ -21,8 +22,26 @@ var globalanimalcount=1;
           newForm.appendChild(animalfocus);
         globalanimalcount++;
       }
-    }
-   }
+    }*/
+  }
+var counter = 0;
+
+function moreFields() {
+  counter++;
+  var newFields = document.getElementById('table').cloneNode(true);
+  newFields.id = '';
+  var newField = newFields.childNodes;
+    for (var i = 0; i < newField.length; i++) {
+      var theName = newField[i].name
+      if(theName){
+        newField[i].name = theName + counter;
+      }
+  }
+  var insertHere = document.getElementById('aftertable');
+  insertHere.parentNode.insertBefore(newFields,insertHere);
+}
+
+window.onload = moreFields;
 
   function Animal(name, speed, focus) {
     this.name = name;
@@ -83,7 +102,6 @@ var globalanimalcount=1;
       else {
         button.attachEvent("click", function() { alert("alert");});
       };
-    game();
   }
 
     function raceClick() {
