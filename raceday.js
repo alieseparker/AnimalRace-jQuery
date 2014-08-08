@@ -1,5 +1,28 @@
 
 var creatures = [];
+var globalanimalcount=1;
+
+  function  writeForm(numRacers) {
+    if(globalanimalcount<numRacers) {
+      for(var i = 1; i <= numRacers; i++) {
+        var tempname="animalname"+i, tempspeed="animalspeed"+i, tempfocus="animalfocus"+i, tempform="form"+i;
+        var animalname=document.createElement("input");
+          animalname.setAttribute('type', 'text');
+          animalname.setAttribute('id', tempname);
+        var animalspeed=document.createElement("input");
+          animalspeed.setAttribute('type', 'text');
+          animalspeed.setAttribute('id', tempspeed);
+        var animalfocus=document.createElement("input");
+           animalfocus.setAttribute('type', 'text');
+          animalfocus.setAttribute('id', tempfocus);
+        var newForm=document.getElementById(tempform);
+          newForm.appendChild(animalname);
+          newForm.appendChild(animalspeed);
+          newForm.appendChild(animalfocus);
+        globalanimalcount++;
+      }
+    }
+   }
 
   function Animal(name, speed, focus) {
     this.name = name;
@@ -8,32 +31,24 @@ var creatures = [];
     this.position = 0;
   }
 
-  function createAnimal() {
-    var name, speed, focus;
-    this.name = document.getElementbyId("animal1name").target;
-    this.speed = document.getElementbyId("animal1speed").value;
-    this.focus = document.getElementbyId("animal1focus").value;
+  function createAnimal(numRacers) {
+/*    if(creatures.length!=numRacers) {
+      for(var i = 0; i< numRacers; i++) {
+        creature[i] = creature [0];
+      }
+      document.getElementsByType("form1").innerHTML = creature[i];
+      for(var i = 0; i< numRacers; i++) {
+        creature[i]=document.getElementsById()
+      }
+    }
+*/
+    //for(var i = 0; i < numRacers; i++) {
+      var animalName = document.getElementById("animal1name");
+      var animalSpeed = document.getElementById("animal2speed");
+      var animalFocus = document.getElementById("animal3focus");
+    //}
 
-    creatures.push(new Animal(name, speed, focus));
   }
-
-
-function addRow() {
-
-    //var myName = document.getElementById("name");
-    //var speed = document.getElementById("speed");
-    //var focus = document.getElementById("focus")
-    var table = document.getElementById("form1");
-
-    var rowCount = table.rows.length;
-    var row = table.insertRow(rowCount);
-
-    row.insertCell(0).innerHTML= myName.value;
-    row.insertCell(1).innerHTML= speed.value;
-    row.insertCell(2).innerHTML= focus.value;
-
-
-}
 
   function winner() {
     var whoWins = 0;
@@ -60,6 +75,19 @@ function addRow() {
     }
   }
 
-  addRow();
-  addRow();
-  addRow();
+  function buttonClick() {
+    var button = document.getElementById("submitButton");
+      if(button.addEventListener){
+        button.addEventListener("click", function() { alert("alert");});
+      }
+      else {
+        button.attachEvent("click", function() { alert("alert");});
+      };
+    game();
+  }
+
+  function game(){
+    var numRacers = document.getElementsByName("numberofracers").value;
+    var numRacers = parseInt(numRacers);
+    writeForm(numRacers);
+  }
