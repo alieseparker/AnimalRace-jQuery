@@ -75,7 +75,7 @@ var globalanimalcount=1;
     }
   }
 
-  function buttonClick() {
+  function submitClick() {
     var button = document.getElementById("submitButton");
       if(button.addEventListener){
         button.addEventListener("click", function() { alert("alert");});
@@ -85,6 +85,18 @@ var globalanimalcount=1;
       };
     game();
   }
+
+    function raceClick() {
+    var button = document.getElementById("raceButton");
+      if(button.addEventListener){
+        button.addEventListener("click", function() { alert("alert");});
+      }
+      else {
+        button.attachEvent("click", function() { alert("alert");});
+      };
+    game();
+  }
+
 
   function game(){
     var numRacers = document.getElementsByName("numberofracers").value;
