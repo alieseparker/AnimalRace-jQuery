@@ -27,24 +27,27 @@
         </table>
       </div>
       <br>
-      <div id = "inputTable">
-        <table style = "width 300px">
+
+      <div id="table">
+        <table>
           <tr>
-            <th id ="labelnumAnimal">Animal #1</th>
-            <th>Animal #2</th>
+          <form>
+            <ul>
+              <th id ="newtable">Animal<br>
+              Name<input type ="text" name="animalname" value="name"><br>
+              Speed<input type="text" name="animalspeed" value="speed"><br>
+              Focus<input type="text" name="animalfocus" value="focus"><br>
+              </th>
+            </ul>
+          </form>
           </tr>
-          <tr>
-            <th>
-              <form id="form1">
-                <ul>
-                  <li id="one">Animal Name: <input type="text" name="animal1name"><br></li>
-                  <li id="two">Animal Speed: <input type="text" name="animal1speed"><br></li>
-                  <li id="three">Animal Focus: <input type="text" name="animal1focus"><br></li>
-                </ul>
-              </form>
-            </th>
         </table>
-       </div>
+
+      </div>
+
+      <span id="aftertable"></span>
+
+
         <br>
         <div align="center">
           <button input type ="button" id ="submitButton" onclick="buttonClick()">Submit</button>
