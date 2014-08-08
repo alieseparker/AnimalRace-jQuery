@@ -1,29 +1,7 @@
 
 var creatures = [];
-var globalanimalcount=1;
 
-  function  writeForm(numRacers) {
-    /*if(globalanimalcount<numRacers) {
-      for(var i = 1; i <= numRacers; i++) {
-        var tempname="animalname"+i, tempspeed="animalspeed"+i, tempfocus="animalfocus"+i, tempform="form"+i;
-        var newlist=document.createElement("ul")
-        var animalname=document.createElement("input");
-          animalname.setAttribute('type', 'text');
-          animalname.setAttribute('id', tempname);
-        var animalspeed=document.createElement("input");
-          animalspeed.setAttribute('type', 'text');
-          animalspeed.setAttribute('id', tempspeed);
-        var animalfocus=document.createElement("input");
-           animalfocus.setAttribute('type', 'text');
-          animalfocus.setAttribute('id', tempfocus);
-        var newForm=document.getElementById(tempform);
-          newForm.appendChild(animalname);
-          newForm.appendChild(animalspeed);
-          newForm.appendChild(animalfocus);
-        globalanimalcount++;
-      }
-    }*/
-  }
+
 var counter = 0;
 
 function moreFields() {
@@ -51,22 +29,13 @@ window.onload = moreFields;
   }
 
   function createAnimal(numRacers) {
-/*    if(creatures.length!=numRacers) {
+      creatureinput=document.getElementByTagName('input').childNodes;
       for(var i = 0; i< numRacers; i++) {
-        creature[i] = creature [0];
+        creatureinput=document.getElementByTagName('input').childNodes;
+        creatures[i] = new Animal(creatureinput[i].getElementsByNames('animalname').value,
+                      creatureinput[i].getElementsByNames('animalspeed').value,
+                      creatureinput[i].getElementsByName('animalfocus').value);
       }
-      document.getElementsByType("form1").innerHTML = creature[i];
-      for(var i = 0; i< numRacers; i++) {
-        creature[i]=document.getElementsById()
-      }
-    }
-*/
-    //for(var i = 0; i < numRacers; i++) {
-      var animalName = document.getElementById("animal1name");
-      var animalSpeed = document.getElementById("animal2speed");
-      var animalFocus = document.getElementById("animal3focus");
-    //}
-
   }
 
   function winner() {
@@ -107,5 +76,12 @@ window.onload = moreFields;
   function game(){
     var numRacers = document.getElementsByName("numberofracers").value;
     var numRacers = parseInt(numRacers);
-    writeForm(numRacers);
+    if(creatures.length<numRacers) {
+      for(var i = 1; i < numRacers; i++) {
+        moreFields();
+      }
+    }
+    else {
+        createAnimal(numRacers);
+    }
   }
