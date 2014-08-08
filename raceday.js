@@ -63,7 +63,7 @@ window.onload = moreFields;
     }
   }
 
-  function buttonClick() {
+  function submitClick() {
     var button = document.getElementById("submitButton");
       if(button.addEventListener){
         button.addEventListener("click", function() { alert("alert");});
@@ -72,6 +72,18 @@ window.onload = moreFields;
         button.attachEvent("click", function() { alert("alert");});
       };
   }
+
+    function raceClick() {
+    var button = document.getElementById("raceButton");
+      if(button.addEventListener){
+        button.addEventListener("click", function() { alert("alert");});
+      }
+      else {
+        button.attachEvent("click", function() { alert("alert");});
+      };
+    game();
+  }
+
 
   function game(){
     var numRacers = document.getElementsByName("numberofracers").value;

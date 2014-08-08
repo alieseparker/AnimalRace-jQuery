@@ -15,22 +15,65 @@
           <tr>
             <th>
               <form>
-                How many animals will race? <input type="text" name="numberofracers">
+                How many animals will race?
+                <select name="numberofracers">
+                  <option value="2" selected>2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
               </form>
             </th>
             <th>
               <form>
-                How many laps will the race have? <input type="text" name="laps">
+                How many laps will the race have?
+                  <select name="laps">
+                    <option value="2" selected>2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
               </form>
             </th>
           </tr>
         </table>
       </div>
       <br>
-
-      <div id="table">
-        <table>
+      <div align="center">
+        <button input type ="button" id ="submitButton" onclick="submitClick()">Submit</button>
+      </div>
+      <br>
+      <div id = "Table">
+        <table style = "width 300px" align="center">
           <tr>
+            <th id="animalNumber">Animal #1</th>
+            <th id="animalNumber">Animal #2</th>
+            <th id="animalNumber">Animal #3</th>
+            <th id="animalNumber">Animal #4</th>
+            <th id="animalNumber">Animal #5</th>
+          </tr>
+          <tr>
+            <form id="newtable">
+              <th id="one">Name: <input type="text" name="animalname" value="name"></th>
+              <th id="one">Name: <input type="text" name="animalname" value="name"></th>
+              <th id="one">Name: <input type="text" name="animalname" value="name"></th>
+              <th id="one">Name: <input type="text" name="animalname" value="name"></th>
+              <th id="one">Name: <input type="text" name="animalname" value="name"></th>
+            </form>
+          </tr>
+          <tr>
+            <form id="newtable">
+              <th id="two">Speed: <input type="text" name="animal1speed" value="speed"></th>
+              <th id="two">Speed: <input type="text" name="animal1speed" value="speed"></th>
+              <th id="two">Speed: <input type="text" name="animal1speed" value="speed"></th>
+              <th id="two">Speed: <input type="text" name="animal1speed" value="speed"></th>
+              <th id="two">Speed: <input type="text" name="animal1speed" value="speed"></th>
+            </form>
+          </tr>
+          <tr>
+<<<<<<< HEAD
           <form>
             <ul>
               <th id ="newtable">Animal<br>
@@ -40,6 +83,15 @@
               </th>
             </ul>
           </form>
+=======
+            <form id="newtable">
+              <th id="three">Focus: <input type="text" name="animalfocus" value="focus"><br>
+              <th id="three">Focus: <input type="text" name="animalfocus" value="focus"><br>
+              <th id="three">Focus: <input type="text" name="animalfocus" value="focus"><br>
+              <th id="three">Focus: <input type="text" name="animalfocus" value="focus"><br>
+              <th id="three">Focus: <input type="text" name="animalfocus" value="focus"><br>
+            </form>
+>>>>>>> 2d87a3b5fdfd011622a320e21282042b58089c3c
           </tr>
         </table>
       </div>
@@ -49,7 +101,7 @@
 
         <br>
         <div align="center">
-          <button input type ="button" id ="submitButton" onclick="buttonClick()">Submit</button>
+          <button input type ="button" id ="raceButton" onclick="raceClick()">RACE</button>
         </div>
     </section>
     <hr>
