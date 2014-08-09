@@ -1,9 +1,8 @@
 
 var creatures = [];
-
-
 var counter = 0;
 
+/*
 function moreFields() {
   counter++;
   var newFields = document.getElementById('table').cloneNode(true);
@@ -20,6 +19,19 @@ function moreFields() {
 }
 
 window.onload = moreFields;
+*/
+
+  function numRacers() {
+    var numberRacers = document.getElementById('numberofracers').value;
+    var numberRacers = parseInt(numberRacers);
+    return numberRacers;
+  }
+
+  function numTurns() {
+    var numberTurns = document.getElementById("laps").value;
+    var numberTurns = parseInt(numberTurns);
+    return numberTurns;
+  }
 
   function Animal(name, speed, focus) {
     this.name = name;
@@ -28,14 +40,22 @@ window.onload = moreFields;
     this.position = 0;
   }
 
-  function createAnimal(numRacers) {
-      creatureinput=document.getElementByTagName('input').childNodes;
-      for(var i = 0; i< numRacers; i++) {
-        creatureinput=document.getElementByTagName('input').childNodes;
-        creatures[i] = new Animal(creatureinput[i].getElementsByNames('animalname').value,
-                      creatureinput[i].getElementsByNames('animalspeed').value,
-                      creatureinput[i].getElementsByName('animalfocus').value);
-      }
+  function createAnimal() {
+      creatures[0]=new Animal(document.getElementById('animalname1').value,
+        document.getElementById('animalspeed1').value,
+        document.getElementById('animalspeed1').value);
+      creatures[1]=new Animal(document.getElementById('animalname2').value,
+        document.getElementById('animalspeed2').value,
+        document.getElementById('animalspeed2').value);
+      creatures[2]=new Animal(document.getElementById('animalname3').value,
+        document.getElementById('animalspeed3').value,
+        document.getElementById('animalspeed3').value);
+      creatures[3]=new Animal(document.getElementById('animalname4').value,
+        document.getElementById('animalspeed4').value,
+        document.getElementById('animalspeed4').value);
+      creatures[4]=new Animal(document.getElementById('animalname5').value,
+        document.getElementById('animalspeed5').value,
+        document.getElementById('animalspeed5').value);
   }
 
   function winner() {
@@ -50,9 +70,10 @@ window.onload = moreFields;
     alert(creatures[whoWins].name +" WINS THE RACE!!!!");
   }
 
-  function turn(numTurns){
-    alert("Turn #" + (numTurns+1));
-    for(var i = 0; i < creatures.length; i++){
+  function turn(numberTurns){
+    var numberRacers = numRacers();
+    alert("Turn #" + (numberTurns));
+    for(var i = 0; i < numberRacers; i++){
       if((Math.floor(Math.random()*10)) < creatures[i].focus){
         creatures[i].position += creatures[i].speed;
         alert(creatures[i].name+ " moves to space # " +creatures[i].position);
@@ -66,34 +87,45 @@ window.onload = moreFields;
   function submitClick() {
     var button = document.getElementById("submitButton");
       if(button.addEventListener){
-        button.addEventListener("click", function() { alert("alert");});
+        button.addEventListener("click", function(){});
       }
       else {
-        button.attachEvent("click", function() { alert("alert");});
-      };
+        button.attachEvent("click", function(){});
+      }
+    updateRacers();
   }
+
+    function updateRacers() {
+      var numberRacers = numRacers();
+        for(var i = 5; i > numberRacers; i--) {
+          var num=('animalnumber'+i);
+          var name=('animalname'+i);
+          var speed = ('animalspeed'+i);
+          var focus=('animalfocus'+i);
+          document.getElementById(num).innerHTML=" ";
+          document.getElementById(name).type='hidden';
+          document.getElementById(speed).type='hidden';
+          document.getElementById(focus).type='hidden';
+        }
+    }
 
     function raceClick() {
     var button = document.getElementById("raceButton");
       if(button.addEventListener){
-        button.addEventListener("click", function() { alert("alert");});
+        button.addEventListener("click");
       }
       else {
-        button.attachEvent("click", function() { alert("alert");});
-      };
+        button.attachEvent("click");
+      }
     game();
   }
 
 
   function game(){
-    var numRacers = document.getElementsByName("numberofracers").value;
-    var numRacers = parseInt(numRacers);
-    if(creatures.length<numRacers) {
-      for(var i = 1; i < numRacers; i++) {
-        moreFields();
-      }
+    var numberTurns = numTurns();
+    createAnimal();
+    for(var i = 1; i <= numberTurns; i++) {
+    turn(i);
     }
-    else {
-        createAnimal(numRacers);
-    }
+    winner();
   }
