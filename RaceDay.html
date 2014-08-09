@@ -16,7 +16,7 @@
             <th>
               <form>
                 How many animals will race?
-                <select name="numberofracers">
+                <select id="numberofracers">
                   <option value="2" selected>2</option>
                   <option value="3">3</option>
                   <option value="4">4</option>
@@ -27,7 +27,7 @@
             <th>
               <form>
                 How many laps will the race have?
-                  <select name="laps">
+                  <select id="laps">
                     <option value="2" selected>2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
@@ -48,50 +48,38 @@
       <div id = "Table">
         <table style = "width 300px" align="center">
           <tr>
-            <th id="animalNumber">Animal #1</th>
-            <th id="animalNumber">Animal #2</th>
-            <th id="animalNumber">Animal #3</th>
-            <th id="animalNumber">Animal #4</th>
-            <th id="animalNumber">Animal #5</th>
+            <th id="animalnumber1" type="text">Animal #1</th>
+            <th id="animalnumber2" type="text">Animal #2</th>
+            <th id="animalnumber3" type="text">Animal #3</th>
+            <th id="animalnumber4" type="text">Animal #4</th>
+            <th id="animalnumber5" type="text">Animal #5</th>
           </tr>
           <tr>
-            <form id="newtable">
-              <th id="one">Name: <input type="text" name="animalname" value="name"></th>
-              <th id="one">Name: <input type="text" name="animalname" value="name"></th>
-              <th id="one">Name: <input type="text" name="animalname" value="name"></th>
-              <th id="one">Name: <input type="text" name="animalname" value="name"></th>
-              <th id="one">Name: <input type="text" name="animalname" value="name"></th>
+            <form id="nameTable">
+              <th>Name: <input type="text" id="animalname1" value="name"></th>
+              <th><input type="text" id="animalname2" value="name"></th>
+              <th><input type="text" id="animalname3" value="name"></th>
+              <th><input type="text" id="animalname4" value="name"></th>
+              <th><input type="text" id="animalname5" value="name"></th>
             </form>
           </tr>
           <tr>
-            <form id="newtable">
-              <th id="two">Speed: <input type="text" name="animal1speed" value="speed"></th>
-              <th id="two">Speed: <input type="text" name="animal1speed" value="speed"></th>
-              <th id="two">Speed: <input type="text" name="animal1speed" value="speed"></th>
-              <th id="two">Speed: <input type="text" name="animal1speed" value="speed"></th>
-              <th id="two">Speed: <input type="text" name="animal1speed" value="speed"></th>
+            <form id="speedTable">
+              <th>Speed: <input type="text" id="animalspeed1" value="speed"></th>
+              <th><input type="text" id="animalspeed2" value="speed"></th>
+              <th><input type="text" id="animalspeed3" value="speed"></th>
+              <th><input type="text" id="animalspeed4" value="speed"></th>
+              <th><input type="text" id="animalspeed5" value="speed"></th>
             </form>
           </tr>
           <tr>
-<<<<<<< HEAD
-          <form>
-            <ul>
-              <th id ="newtable">Animal<br>
-              Name<input type ="text" name="animalname" autofocus value="name"><br>
-              Speed<input type="text" name="animalspeed" autofocus value="speed"><br>
-              Focus<input type="text" name="animalfocus" autofocus value="focus"><br>
-              </th>
-            </ul>
-          </form>
-=======
-            <form id="newtable">
-              <th id="three">Focus: <input type="text" name="animalfocus" value="focus"><br>
-              <th id="three">Focus: <input type="text" name="animalfocus" value="focus"><br>
-              <th id="three">Focus: <input type="text" name="animalfocus" value="focus"><br>
-              <th id="three">Focus: <input type="text" name="animalfocus" value="focus"><br>
-              <th id="three">Focus: <input type="text" name="animalfocus" value="focus"><br>
+            <form id="focusTable">
+              <th>Focus: <input type="text" id="animalfocus1" value="focus"><br>
+              <th><input type="text" id="animalfocus2" value="focus"><br>
+              <th><input type="text" id="animalfocus3" value="focus"><br>
+              <th><input type="text" id="animalfocus4" value="focus"><br>
+              <th><input type="text" id="animalfocus5" value="focus"><br>
             </form>
->>>>>>> 2d87a3b5fdfd011622a320e21282042b58089c3c
           </tr>
         </table>
       </div>
