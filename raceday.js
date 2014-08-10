@@ -43,19 +43,19 @@ window.onload = moreFields;
   function createAnimal() {
       creatures[0]=new Animal(document.getElementById('animalname1').value,
         document.getElementById('animalspeed1').value,
-        document.getElementById('animalspeed1').value);
+        document.getElementById('animalfocus1').value);
       creatures[1]=new Animal(document.getElementById('animalname2').value,
         document.getElementById('animalspeed2').value,
-        document.getElementById('animalspeed2').value);
+        document.getElementById('animalfocus2').value);
       creatures[2]=new Animal(document.getElementById('animalname3').value,
         document.getElementById('animalspeed3').value,
-        document.getElementById('animalspeed3').value);
+        document.getElementById('animalfocus3').value);
       creatures[3]=new Animal(document.getElementById('animalname4').value,
         document.getElementById('animalspeed4').value,
-        document.getElementById('animalspeed4').value);
+        document.getElementById('animalfocus4').value);
       creatures[4]=new Animal(document.getElementById('animalname5').value,
         document.getElementById('animalspeed5').value,
-        document.getElementById('animalspeed5').value);
+        document.getElementById('animalfocus5').value);
   }
 
   function winner() {
@@ -67,22 +67,23 @@ window.onload = moreFields;
         whoWins = x;
       }
     }
-    alert(creatures[whoWins].name +" WINS THE RACE!!!!");
+    document.getElementById("raceWinner").innerHTML = ("<b>" +creatures[whoWins].name +"</b> WINS THE RACE!!!!");
   }
 
   function turn(numberTurns){
     var numberRacers = numRacers();
-    alert("Turn #" + (numberTurns));
+    document.getElementById("lapresults").innerHTML += ("<br>Lap #<b>" + (numberTurns) + "</b><br>");
     for(var i = 0; i < numberRacers; i++){
       if((Math.floor(Math.random()*10)) < creatures[i].focus){
         creatures[i].position += creatures[i].speed;
-        alert(creatures[i].name+ " moves to space # " +creatures[i].position);
+         document.getElementById("lapresults").innerHTML += ("<b>" +creatures[i].name+ "</b> moves to space # <b>" +creatures[i].position + "</b><br>");
       }
       else {
-        alert("OH NO!!! " +creatures[i].name+ " got distracted and stops to play with some ants.");
+        document.getElementById("lapresults").innerHTML += ("OH NO!!! <b>" +creatures[i].name+ "</b> got distracted and stops to play with some ants. <br>");
       }
     }
   }
+
 
   function submitClick() {
     var button = document.getElementById("submitButton");
@@ -129,3 +130,4 @@ window.onload = moreFields;
     }
     winner();
   }
+
