@@ -65,24 +65,27 @@ window.onload = moreFields;
       if(creatures[x].position > finalPosition){
         finalPosition = creatures[x].position;
         whoWins = x;
+
       }
     }
     document.getElementById("raceWinner").innerHTML = ("<b>" +creatures[whoWins].name +"</b> WINS THE RACE!!!!");
   }
 
+
   function turn(numberTurns){
     var numberRacers = numRacers();
     document.getElementById("lapresults").innerHTML += ("<br>Lap #<b>" + (numberTurns) + "</b><br>");
-    for(var i = 0; i < numberRacers; i++){
-      if((Math.floor(Math.random()*10)) < creatures[i].focus){
+    for(var i = 0; i < numberRacers; i++) {
+      if((Math.floor(Math.random()*10)) < creatures[i].focus) {
         creatures[i].position += creatures[i].speed;
-         document.getElementById("lapresults").innerHTML += ("<b>" +creatures[i].name+ "</b> moves to space # <b>" +creatures[i].position + "</b><br>");
+        document.getElementById("lapresults").innerHTML += ("<b>" +creatures[i].name+ "</b> moves to space # <b>" +creatures[i].position + "</b><br>");
       }
       else {
         document.getElementById("lapresults").innerHTML += ("OH NO!!! <b>" +creatures[i].name+ "</b> got distracted and stops to play with some ants. <br>");
       }
     }
   }
+
 
 
   function submitClick() {
@@ -102,7 +105,9 @@ window.onload = moreFields;
           var num=('animalnumber'+i);
           var name=('animalname'+i);
           var speed = ('animalspeed'+i);
+          speed = parseInt(speed);
           var focus=('animalfocus'+i);
+          focus = parseInt(focus);
           document.getElementById(num).innerHTML=" ";
           document.getElementById(name).type='hidden';
           document.getElementById(speed).type='hidden';
