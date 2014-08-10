@@ -35,18 +35,34 @@ window.onload = moreFields;
 
   function Animal(name, speed, focus) {
     this.name = name;
-    this.speed = speed;
-    this.focus = focus;
+    this.speed = Number(speed);
+    this.focus = Number(focus);
     this.position = 0;
   }
 
   function createAnimal() {
-    var numberRacers=numRacers();
+    creatures[0]=new Animal(document.getElementById('animalname1').value,
+      document.getElementById('animalspeed1').value,
+      document.getElementById('animalfocus1').value);
+    creatures[1]=new Animal(document.getElementById('animalname2').value,
+        document.getElementById('animalspeed2').value,
+      document.getElementById('animalfocus2').value);
+    creatures[2]=new Animal(document.getElementById('animalname3').value,
+      document.getElementById('animalspeed3').value,
+      document.getElementById('animalfocus3').value);
+    creatures[3]=new Animal(document.getElementById('animalname4').value,
+      document.getElementById('animalspeed4').value,
+      document.getElementById('animalfocus4').value);
+     creatures[4]=new Animal(document.getElementById('animalname5').value,
+      document.getElementById('animalspeed5').value,
+    document.getElementById('animalfocus5').value);
+   }
+  /*var numberRacers=numRacers();
     for (var i = 0; i < numberRacers; i++) {
       creatures[i]=new Animal(document.getElementById('animalname'+i).value,
         parseInt(document.getElementById('animalspeed'+i).value),
         parseInt(document.getElementById('animalfocus'+i).value));
-    }
+    }*/
 
   function winner() {
     var whoWins = 0;
@@ -95,9 +111,7 @@ window.onload = moreFields;
           var num=('animalnumber'+i);
           var name=('animalname'+i);
           var speed = ('animalspeed'+i);
-          speed = parseInt(speed);
-          var focus=('animalfocus'+i);
-          focus = parseInt(focus);
+          var focus = ('animalfocus'+i);
           document.getElementById(num).innerHTML=" ";
           document.getElementById(name).type='hidden';
           document.getElementById(speed).type='hidden';
