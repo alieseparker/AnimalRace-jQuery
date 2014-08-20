@@ -1,34 +1,13 @@
-
 var creatures = [];
 var counter = 0;
 
-/*
-function moreFields() {
-  counter++;
-  var newFields = document.getElementById('table').cloneNode(true);
-  newFields.id = '';
-  var newField = newFields.childNodes;
-    for (var i = 0; i < newField.length; i++) {
-      var theName = newField[i].name
-      if(theName){
-        newField[i].name = theName + counter;
-      }
-  }
-  var insertHere = document.getElementById('aftertable');
-  insertHere.parentNode.insertBefore(newFields,insertHere);
-}
-
-window.onload = moreFields;
-*/
-
   function numRacers() {
-    var numberRacers = document.getElementById('numberofracers').value;
-    var numberRacers = parseInt(numberRacers);
+    var numberRacers = $("#numberofracers").val();
     return numberRacers;
   }
 
   function numTurns() {
-    var numberTurns = document.getElementById("laps").value;
+    var numberTurns = $("#laps").val;
     var numberTurns = parseInt(numberTurns);
     return numberTurns;
   }
@@ -41,28 +20,12 @@ window.onload = moreFields;
   }
 
   function createAnimal() {
-    creatures[0]=new Animal(document.getElementById('animalname1').value,
-      document.getElementById('animalspeed1').value,
-      document.getElementById('animalfocus1').value);
-    creatures[1]=new Animal(document.getElementById('animalname2').value,
-        document.getElementById('animalspeed2').value,
-      document.getElementById('animalfocus2').value);
-    creatures[2]=new Animal(document.getElementById('animalname3').value,
-      document.getElementById('animalspeed3').value,
-      document.getElementById('animalfocus3').value);
-    creatures[3]=new Animal(document.getElementById('animalname4').value,
-      document.getElementById('animalspeed4').value,
-      document.getElementById('animalfocus4').value);
-     creatures[4]=new Animal(document.getElementById('animalname5').value,
-      document.getElementById('animalspeed5').value,
-    document.getElementById('animalfocus5').value);
-   }
-  /*var numberRacers=numRacers();
-    for (var i = 0; i < numberRacers; i++) {
-      creatures[i]=new Animal(document.getElementById('animalname'+i).value,
-        parseInt(document.getElementById('animalspeed'+i).value),
-        parseInt(document.getElementById('animalfocus'+i).value));
-    }*/
+    var numberRacers=numRacers();
+    for(var i = 0; i < numberRacers; i++) {
+    creatures[i]=new Animal( $("#animalname"+i).val(),
+      parseInt($("#animalspeed"+i).val()), parseInt($("#animalfocus"+i).val()));
+    }
+  }
 
   function winner() {
     var whoWins = 0;
@@ -74,62 +37,42 @@ window.onload = moreFields;
 
       }
     }
-    document.getElementById("raceWinner").innerHTML = ("<b>" +creatures[whoWins].name +"</b> WINS THE RACE!!!!");
+    $("#raceWinner").html("<b>" + creatures[whoWins].name +"</b> WINS THE RACE!!!!");
   }
 
 
   function turn(numberTurns){
     var numberRacers = numRacers();
-    document.getElementById("lapresults").innerHTML += ("<br>Lap #<b>" + (numberTurns) + "</b><br>");
+    $("#lapresults").html("<br>Lap #<b>" + (numberTurns) + "</b><br>");
     for(var i = 0; i < numberRacers; i++) {
       if((Math.floor(Math.random()*10)) < creatures[i].focus) {
         creatures[i].position += creatures[i].speed;
-        document.getElementById("lapresults").innerHTML += ("<b>" +creatures[i].name+ "</b> moves to space # <b>" +creatures[i].position + "</b><br>");
+        $("#lapresults").html("<b>" +creatures[i].name+ "</b> moves to space # <b>" +creatures[i].position + "</b><br>");
       }
       else {
-        document.getElementById("lapresults").innerHTML += ("OH NO!!! <b>" +creatures[i].name+ "</b> got distracted and stops to play with some ants. <br>");
+        $("#lapresults").html("OH NO!!! <b>" +creatures[i].name+ "</b> got distracted and stops to play with some ants. <br>");
       }
     }
-  }
-
-
-
-  function submitClick() {
-    var button = document.getElementById("submitButton");
-      if(button.addEventListener){
-        button.addEventListener("click", function(){});
-      }
-      else {
-        button.attachEvent("click", function(){});
-      }
-    updateRacers();
   }
 
     function updateRacers() {
       var numberRacers = numRacers();
-        for(var i = 5; i > numberRacers; i--) {
-          var num=('animalnumber'+i);
-          var name=('animalname'+i);
-          var speed = ('animalspeed'+i);
-          var focus = ('animalfocus'+i);
-          document.getElementById(num).innerHTML=" ";
-          document.getElementById(name).type='hidden';
-          document.getElementById(speed).type='hidden';
-          document.getElementById(focus).type='hidden';
-        }
+      var dispRacers = $("#animals").siblings('div').length;
+      $("#animals").siblings('div').empty();
+
+      for(var i = numberRacers; i > 0; i--) {
+        $("#animals").after(updateRacerForm(i));
+      }
+      $(".hideMe").removeClass("hideMe").addClass("seeMe")
     }
 
-    function raceClick() {
-    var button = document.getElementById("raceButton");
-      if(button.addEventListener){
-        button.addEventListener("click");
-      }
-      else {
-        button.attachEvent("click");
-      }
-    game();
-  }
 
+    function updateRacerForm(i) {
+      return "<div class='animal three columns'><p>Animal# " + i +"</p>" +
+        "<p>Animal Name:<input type='text' class='selected' id='animalname" + i + "'></p>" +
+        "<p>Animal Speed:<input type='text' class='selected' id='animalspeed" + i + "'></p>" +
+        "<p>Animal Focus:<input type='text' class='selected' id='animalfocus" + i + "'></p> </div>";
+    }
 
   function game(){
     var numberTurns = numTurns();
@@ -140,3 +83,7 @@ window.onload = moreFields;
     winner();
   }
 
+  $('button').click(function(){
+    $("#raceButton").click(game());
+    $("#submitButton").click(updateRacers());
+  });

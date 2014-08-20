@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <link rel="stylesheet" type="text/css" href="body.css">
+  <link rel="stylesheet" type="text/css" href="modules.css">
+  <link rel="stylesheet" type="text/css" href="layout.css">
+  <link rel="stylesheet" type="text/css" href="state.css">
+  <link rel="stylesheet" type="text/css" href="theme.css">
+
+
+<head>
+  <title>RaceDay!</title>
+</head>
+
+  <header align="center">
+    <b>Its the day of the big race!</b>
+  </header>
+
+  <body>
+    <article>
+      <section class="container">
+        <div id = "input">
+          <form class="splithalf">
+            How many animals will race?
+            <select id="numberofracers">
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </form>
+
+          <form class="splithalf">
+            How many laps will the race have?
+            <select id="laps">
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+            </select>
+          </form>
+        </div>
+
+        <div>
+          <button input type ="button" id="submitButton">Submit</button>
+        </div>
+      </section>
+
+      <section class="container" id="animals">
+
+      </section>
+    </article>
+
+    <article class="hideMe">
+      <section>
+          <div align="center">
+            <button input type="button" id="raceButton">Race</button>
+          </div>
+
+        <p class="hideme"><b>Results of the race:</b></p>
+          <p id="lapresults"></p>
+          <p id="raceWinner"></p>
+      </section>
+    </article>
+  </body>
+
+<script type ="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
+</script>
+
+<script type ="text/javascript" src ="raceday.js">
+</script>
+
+</html>
