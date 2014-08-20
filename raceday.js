@@ -1,40 +1,39 @@
 var creatures = [];
-var counter = 0;
 
   function numRacers() {
     var numberRacers = $("#numberofracers").val();
-    return numberRacers;
+    return parseInt(numberRacers);
   }
 
   function numTurns() {
     var numberTurns = $("#laps").val;
-    var numberTurns = parseInt(numberTurns);
-    return numberTurns;
+    return parseInt(numberTurns);
   }
 
   function Animal(name, speed, focus) {
     this.name = name;
-    this.speed = Number(speed);
-    this.focus = Number(focus);
+    this.speed = speed;
+    this.focus = focus;
     this.position = 0;
   }
 
   function createAnimal() {
-    var numberRacers=numRacers();
-    for(var i = 0; i < numberRacers; i++) {
-    creatures[i]=new Animal( $("#animalname"+i).val(),
-      parseInt($("#animalspeed"+i).val()), parseInt($("#animalfocus"+i).val()));
+    var numberRacers = numRacers();
+
+    for(var i = 1; i <= numberRacers; i++) {
+      creatures[i] = new Animal( $("#animalname"+i).val(),
+        parseInt($("#animalspeed"+i).val()), parseInt($("#animalfocus"+i).val()) );
     }
   }
 
   function winner() {
-    var whoWins = 0;
+    var whoWins = 1;
     var finalPosition = 0;
-    for(var x = 0; x < creatures.length; x++){
+
+    for(var x = 1; x < creatures.length; x++){
       if(creatures[x].position > finalPosition){
         finalPosition = creatures[x].position;
         whoWins = x;
-
       }
     }
     $("#raceWinner").html("<b>" + creatures[whoWins].name +"</b> WINS THE RACE!!!!");
@@ -43,16 +42,13 @@ var counter = 0;
 
   function turn(numberTurns){
     var numberRacers = numRacers();
-    $("#lapresults").html("<br>Lap #<b>" + (numberTurns) + "</b><br>");
-    for(var i = 0; i < numberRacers; i++) {
+
+    for(var i = 1; i <= numberRacers; i++) {
       if((Math.floor(Math.random()*10)) < creatures[i].focus) {
         creatures[i].position += creatures[i].speed;
-        $("#lapresults").html("<b>" +creatures[i].name+ "</b> moves to space # <b>" +creatures[i].position + "</b><br>");
-      }
-      else {
-        $("#lapresults").html("OH NO!!! <b>" +creatures[i].name+ "</b> got distracted and stops to play with some ants. <br>");
       }
     }
+
   }
 
     function updateRacers() {
@@ -77,13 +73,19 @@ var counter = 0;
   function game(){
     var numberTurns = numTurns();
     createAnimal();
+
     for(var i = 1; i <= numberTurns; i++) {
-    turn(i);
+      turn(i);
     }
+
     winner();
   }
 
-  $('button').click(function(){
-    $("#raceButton").click(game());
-    $("#submitButton").click(updateRacers());
-  });
+
+    $("#raceButton").on('click', function() {
+      this.onclick = game();
+    });
+
+    $("#submitButton").on('click', function() {
+      this.onclick = updateRacers();
+    });
