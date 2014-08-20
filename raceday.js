@@ -1,10 +1,8 @@
-
 var creatures = [];
 var counter = 0;
 
   function numRacers() {
     var numberRacers = $("#numberofracers").val();
-    var numberRacers = parseInt(numberRacers);
     return numberRacers;
   }
 
@@ -59,12 +57,21 @@ var counter = 0;
 
     function updateRacers() {
       var numberRacers = numRacers();
-        for(var i = 5; i > numberRacers; i--) {
-          $('#animalnumber'+i).html(" ");
-          $('#animalname'+i).css('display','none');
-          $('#animalspeed'+i).css('display','none');
-          $('#animalfocus'+i).css('display','none');
-        }
+      var dispRacers = $("#animals").siblings('div').length;
+      $("#animals").siblings('div').empty();
+
+      for(var i = numberRacers; i > 0; i--) {
+        $("#animals").after(updateRacerForm(i));
+      }
+      $(".hideMe").removeClass("hideMe").addClass("seeMe")
+    }
+
+
+    function updateRacerForm(i) {
+      return "<div class='animal three columns'><p>Animal# " + i +"</p>" +
+        "<p>Animal Name:<input type='text' class='selected' id='animalname" + i + "'></p>" +
+        "<p>Animal Speed:<input type='text' class='selected' id='animalspeed" + i + "'></p>" +
+        "<p>Animal Focus:<input type='text' class='selected' id='animalfocus" + i + "'></p> </div>";
     }
 
   function game(){
@@ -76,10 +83,7 @@ var counter = 0;
     winner();
   }
 
-  function raceClick() {
-    $("#raceButton").on('click', game());
-  }
-
-  function submitClick() {
-    $("#submitButton").on('click', updateRacers());
-  }
+  $('button').click(function(){
+    $("#raceButton").click(game());
+    $("#submitButton").click(updateRacers());
+  });
